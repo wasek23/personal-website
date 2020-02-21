@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+@import url("css/main.css");
+
+#header{
+    background: url("img/header-bg.png");
+}
+
+#biography{
+    background: url("img/biography-bg.png");
+}
+
+#work{
+    background: url("img/latest-work-bg.png");
+}
+
+#footer{
+    background: url("img/footer-bg.png");
+}
+
+#header, #biography, #work, #footer{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}

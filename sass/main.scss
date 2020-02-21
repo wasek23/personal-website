@@ -1,0 +1,452 @@
+// Mixins
+@mixin gradientBG {
+  background: linear-gradient(to right, $colorSecondary, $colorPrimary);
+}
+@mixin gradientBGRev {
+  background: linear-gradient(to left, $colorSecondary, $colorPrimary);
+}
+
+// Media Query
+
+// 3800px min : uhd
+// 3320px min : ultra_wide_qhd
+// 2840px min : wide_qhd
+// 2360px min : qhd
+// 1880px min : full_hd
+// 1400px min : wide_hd
+// 1200px - 1399px Normal style : hd
+// 1200px max : tab_big
+// 992px max : tab_land
+// 768px max : tab_port
+// 576px max : phone
+
+// Use in sass
+//  @include respond(wide_hd){}
+//  @include respond(full_hd){}
+//  @include respond(qhd){}
+//  @include respond(wide_qhd){}
+//  @include respond(ultra_wide_qhd){}
+//  @include respond(uhd){}
+
+//  @include respond(tab_big){}
+//  @include respond(tab_land){}
+//  @include respond(tab_port){}
+//  @include respond(phone){}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == wide_hd {
+    @media only screen and (min-width: 87.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == full_hd {
+    @media only screen and (min-width: 117.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == qhd {
+    @media only screen and (min-width: 147.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == wide_qhd {
+    @media only screen and (min-width: 177.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == ultra_wide_qhd {
+    @media only screen and (min-width: 207.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == uhd {
+    @media only screen and (min-width: 237.5em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab_big {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab_land {
+    @media only screen and (max-width: 62em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab_port {
+    @media only screen and (max-width: 48em) {
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 36em) {
+      @content;
+    }
+  }
+}
+
+// Variables
+// Colors
+$colorPrimary: #ec4c7a;
+$colorSecondary: #ed5e9c;
+
+// Font
+$defaultFontSize: 1.6rem;
+
+// Grid
+$gridWidth: 114rem;
+$gutterVertical: 8rem;
+$gutterVerticalSmall: 6rem;
+$gutterHorizontalBig: 7rem;
+$gutterHorizontal: 5rem;
+$gutterHorizontalSmall: 3rem;
+
+// Animations
+@keyframes moveToRight{
+  0%{
+      opacity: 0;
+      transform: translateX(-10rem);
+  }
+  80%{
+      transform: translateX(1rem);
+  }
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+@keyframes moveToLeft{
+  0%{
+      opacity: 0;
+      transform: translateX(10rem);
+  }
+  80%{
+      transform: translateX(-1rem);
+  }
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+@keyframes moveToTop{
+  0%{
+      opacity: 0;
+      transform: translateY(3rem);
+  }
+  100%{
+      opacity: 1;
+      transform: translate(0);
+  }
+}
+
+.left{
+  animation: moveToRight 1s ease-out;
+}
+.right{
+  animation: moveToLeft 1s ease-out;
+}
+
+// Base
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  // This defines what 1rem is
+  font-size: 62.5%; // 1rem = 10px.
+  scroll-behavior: smooth;
+
+  @include respond(wide_hd) {
+    font-size: 72.75%; // 1rem = 11.64px.
+  }
+  @include respond(full_hd) {
+    font-size: 97.75%; // 1rem = 15.64px.
+  }
+  @include respond(qhd) {
+    font-size: 122.75%; // 1rem = 19.64px.
+  }
+  @include respond(wide_qhd) {
+    font-size: 147.75%; // 1rem = 23.64px.
+  }
+  @include respond(ultra_wide_qhd) {
+    font-size: 172.75%; // 1rem = 27.64px.
+  }
+  @include respond(uhd) {
+    font-size: 197.75%; // 1rem = 31.64px.
+  }
+
+  @include respond(tab_land) {
+    font-size: 56.25%; // 1rem = 9px.
+  }
+  @include respond(tab_port) {
+    font-size: 50%; // 1rem = 8px.
+  }
+}
+body {
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.container {
+  max-width: $gridWidth;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  &:not(:last-child) {
+    margin-bottom: $gutterVertical;
+  }
+}
+
+::selection {
+  background-color: $colorPrimary;
+  color: #fff;
+}
+
+// Typography
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: $defaultFontSize;
+  color: #777;
+}
+
+h1,
+h2,
+p {
+  margin-bottom: 2rem;
+}
+
+h1{
+  font-size: 4rem;
+  font-weight: 100;
+  margin-bottom: 3.5rem;
+  transition: .2s all ease;
+}
+h1:hover {
+  transform: translateY(-.8rem);
+}
+
+h1 .blackShadow{
+  transition: .2s all ease;
+}
+h1:hover .blackShadow{
+  text-shadow: 0 .8rem 1rem grey;
+}
+h1 .colorPrimary{
+  color: $colorPrimary;
+  font-weight: 800;
+  transition: .2s all ease;
+}
+h1:hover .colorPrimary{
+  text-shadow: 0 .8rem 1rem $colorPrimary;
+} 
+
+h2{
+  font-size: 3.5rem;
+  letter-spacing: .2rem;
+  @include gradientBG;
+  text-transform: uppercase;
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: .2s all ease;
+}
+h2:hover {
+  transform: skewX(15deg) skewY(2deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0,0,0,0.2);
+}
+
+// Element
+.btn {
+  text-decoration: none;
+  color: #fff;
+  @include gradientBG;
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  animation: moveToTop .5s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+.btn:hover {
+  @include gradientBGRev;
+  transform: translateY(-.5rem);
+  box-shadow: 0 .5rem 1rem .5rem $colorPrimary;
+}
+
+img {
+  width: 100%;
+}
+
+.text-center{
+  text-align: center;
+}
+
+// Sections
+#header, #biography, #work, #footer{
+  padding: $gutterVertical 0;
+}
+
+#header .container,
+#biography .container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 7.5rem;
+  align-items: center;
+}
+
+// Header
+#header .container{
+  @include respond(tab_big){
+    grid-template-columns: 1fr .9fr;
+  }
+  @include respond(tab_land){
+    grid-template-columns: 1fr .8fr;
+  }
+  @include respond(tab_port){
+    grid-template-columns: 1fr .6fr;
+  }
+  @include respond(phone){
+    grid-template-columns: 1fr;
+  }
+}
+
+// Biography
+#biography .container{
+  @include respond(tab_big){
+    grid-template-columns: .9fr 1fr;
+  }
+  @include respond(tab_land){
+    grid-template-columns: .8fr 1fr;
+  }
+  @include respond(tab_port){
+    grid-template-columns: .6fr 1fr;
+  }
+  @include respond(phone){
+    grid-template-columns: 1fr;
+  }
+}
+
+// Latest Work
+#work{
+  .workItems{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 3rem;
+    align-items: center;
+
+    @include respond(tab_port){
+      grid-template-columns: 1fr;
+      grid-gap: 4rem;
+      width: 550px;
+      margin: 0 auto;
+    }
+    @include respond(phone){
+      width: 100%;
+    }
+
+    .singleWork{
+      transition: all .2s ease;
+    }
+    .singleWork:hover{
+      transform: translateY(-.5rem);
+      box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);;
+    }
+
+    .middle{
+      animation: moveToTop 1s ease-out;
+    }
+    @include respond(tab_port){
+      .middle{
+        animation: moveToLeft 1s ease-out;
+      }
+      .right{
+        animation: moveToRight 1s ease-out;
+      }
+    }
+  }
+}
+
+#work h2, #footer h2{
+  margin-bottom: 6rem;
+}
+
+// Footer
+#footer{
+  padding-bottom: 0;
+
+  // Footer Testimonials
+  .testimonial{
+    margin-bottom: 8rem;
+
+    small{
+      display: block;
+      margin-top: 1rem;
+    }
+
+    blockquote{
+      margin-top: 6rem;
+      line-height: 200%;
+      position: relative;
+      display: inline-block;
+    }
+    blockquote::before{
+      content: "\201C";
+      font-family: Arial;
+      color: rgba($colorPrimary, .2);
+      font-size: 15rem;
+      position: absolute;
+      left: -1rem;
+      top: 3rem;
+    }
+  }
+
+  // Footer Contact
+  .btnContact{
+    border: none;
+    outline: none;
+    text-transform: none;
+    padding: 2rem 5rem;
+    margin-bottom: 10rem;
+
+    small{
+      margin-bottom: 2.5rem;
+      display: inline-block;
+    }
+
+    h3{
+      font-size: 2rem;
+    }
+  }
+
+  // Footer Copyright
+  .copyright{
+    font-size: 1.5rem;
+  }
+
+  .footerLink:link, .footerLink:visited {
+    color: #777;
+    background-color: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    -webkit-transition: .2s all ease;
+    transition: .2s all ease;
+  }
+
+  .footerLink:hover, .footerLink:active {
+    color: $colorPrimary;
+    text-shadow: 0 1rem 2rem rgba(0,0,0,0.4);
+    transform: rotate(5deg) scale(1.2);
+  }
+}

@@ -1,0 +1,276 @@
+@keyframes moveToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveToLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+.left {
+  animation: moveToRight 1s ease-out; }
+
+.right {
+  animation: moveToLeft 1s ease-out; }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth; }
+  @media only screen and (min-width: 87.5em) {
+    html {
+      font-size: 72.75%; } }
+  @media only screen and (min-width: 117.5em) {
+    html {
+      font-size: 97.75%; } }
+  @media only screen and (min-width: 147.5em) {
+    html {
+      font-size: 122.75%; } }
+  @media only screen and (min-width: 177.5em) {
+    html {
+      font-size: 147.75%; } }
+  @media only screen and (min-width: 207.5em) {
+    html {
+      font-size: 172.75%; } }
+  @media only screen and (min-width: 237.5em) {
+    html {
+      font-size: 197.75%; } }
+  @media only screen and (max-width: 62em) {
+    html {
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 48em) {
+    html {
+      font-size: 50%; } }
+
+body {
+  box-sizing: border-box;
+  background-color: #fff; }
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
+  padding: 0 1rem; }
+  .container:not(:last-child) {
+    margin-bottom: 8rem; }
+
+::selection {
+  background-color: #ec4c7a;
+  color: #fff; }
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: #777; }
+
+h1,
+h2,
+p {
+  margin-bottom: 2rem; }
+
+h1 {
+  font-size: 4rem;
+  font-weight: 100;
+  margin-bottom: 3.5rem;
+  transition: .2s all ease; }
+
+h1:hover {
+  transform: translateY(-0.8rem); }
+
+h1 .blackShadow {
+  transition: .2s all ease; }
+
+h1:hover .blackShadow {
+  text-shadow: 0 .8rem 1rem grey; }
+
+h1 .colorPrimary {
+  color: #ec4c7a;
+  font-weight: 800;
+  transition: .2s all ease; }
+
+h1:hover .colorPrimary {
+  text-shadow: 0 0.8rem 1rem #ec4c7a; }
+
+h2 {
+  font-size: 3.5rem;
+  letter-spacing: .2rem;
+  background: linear-gradient(to right, #ed5e9c, #ec4c7a);
+  text-transform: uppercase;
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: .2s all ease; }
+
+h2:hover {
+  transform: skewX(15deg) skewY(2deg) scale(1.1);
+  text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.btn {
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(to right, #ed5e9c, #ec4c7a);
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  border-radius: .5rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  animation: moveToTop .5s ease-out 1s;
+  animation-fill-mode: backwards; }
+
+.btn:hover {
+  background: linear-gradient(to left, #ed5e9c, #ec4c7a);
+  transform: translateY(-0.5rem);
+  box-shadow: 0 0.5rem 1rem 0.5rem #ec4c7a; }
+
+img {
+  width: 100%; }
+
+.text-center {
+  text-align: center; }
+
+#header, #biography, #work, #footer {
+  padding: 8rem 0; }
+
+#header .container,
+#biography .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 7.5rem;
+  align-items: center; }
+
+@media only screen and (max-width: 75em) {
+  #header .container {
+    grid-template-columns: 1fr .9fr; } }
+
+@media only screen and (max-width: 62em) {
+  #header .container {
+    grid-template-columns: 1fr .8fr; } }
+
+@media only screen and (max-width: 48em) {
+  #header .container {
+    grid-template-columns: 1fr .6fr; } }
+
+@media only screen and (max-width: 36em) {
+  #header .container {
+    grid-template-columns: 1fr; } }
+
+@media only screen and (max-width: 75em) {
+  #biography .container {
+    grid-template-columns: .9fr 1fr; } }
+
+@media only screen and (max-width: 62em) {
+  #biography .container {
+    grid-template-columns: .8fr 1fr; } }
+
+@media only screen and (max-width: 48em) {
+  #biography .container {
+    grid-template-columns: .6fr 1fr; } }
+
+@media only screen and (max-width: 36em) {
+  #biography .container {
+    grid-template-columns: 1fr; } }
+
+#work .workItems {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3rem;
+  align-items: center; }
+  @media only screen and (max-width: 48em) {
+    #work .workItems {
+      grid-template-columns: 1fr;
+      grid-gap: 4rem;
+      width: 550px;
+      margin: 0 auto; } }
+  @media only screen and (max-width: 36em) {
+    #work .workItems {
+      width: 100%; } }
+  #work .workItems .singleWork {
+    transition: all .2s ease; }
+  #work .workItems .singleWork:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  #work .workItems .middle {
+    animation: moveToTop 1s ease-out; }
+  @media only screen and (max-width: 48em) {
+    #work .workItems .middle {
+      animation: moveToLeft 1s ease-out; }
+    #work .workItems .right {
+      animation: moveToRight 1s ease-out; } }
+
+#work h2, #footer h2 {
+  margin-bottom: 6rem; }
+
+#footer {
+  padding-bottom: 0; }
+  #footer .testimonial {
+    margin-bottom: 8rem; }
+    #footer .testimonial small {
+      display: block;
+      margin-top: 1rem; }
+    #footer .testimonial blockquote {
+      margin-top: 6rem;
+      line-height: 200%;
+      position: relative;
+      display: inline-block; }
+    #footer .testimonial blockquote::before {
+      content: "\201C";
+      font-family: Arial;
+      color: rgba(236, 76, 122, 0.2);
+      font-size: 15rem;
+      position: absolute;
+      left: -1rem;
+      top: 3rem; }
+  #footer .btnContact {
+    border: none;
+    outline: none;
+    text-transform: none;
+    padding: 2rem 5rem;
+    margin-bottom: 10rem; }
+    #footer .btnContact small {
+      margin-bottom: 2.5rem;
+      display: inline-block; }
+    #footer .btnContact h3 {
+      font-size: 2rem; }
+  #footer .copyright {
+    font-size: 1.5rem; }
+  #footer .footerLink:link, #footer .footerLink:visited {
+    color: #777;
+    background-color: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    -webkit-transition: .2s all ease;
+    transition: .2s all ease; }
+  #footer .footerLink:hover, #footer .footerLink:active {
+    color: #ec4c7a;
+    text-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    transform: rotate(5deg) scale(1.2); }
